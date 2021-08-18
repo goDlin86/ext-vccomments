@@ -1,0 +1,22 @@
+{
+    "manifest_version": 3,
+  
+    "name": "vcComments",
+    "description": "Top comments from vc articles",
+    "version": "1.0",
+
+    "action": {
+        "default_title": "Show comments",
+        "default_popup": "index.html"
+    },
+
+    "permissions": ["tabs"],
+    "host_permissions": ["https://vc.ru/*"],
+
+    "content_scripts": [
+        {
+          "matches": ["https://vc.ru/*"],
+          "js": ["content-script.js"]
+        }
+    ]
+}
