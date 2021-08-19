@@ -1,13 +1,21 @@
 body {
     margin: 20px;
     width: 500px;
-    font-size: 18px;
+    font-size: 16px;
+    line-height: 1.5;
+    background-color: #f1f1f1;
 }
 .comment {
     margin: 10px 0;
+    padding: 10px;
+    border-radius: 10px;
     display: grid;
     grid-template-columns: 64px 1fr 50px;
     column-gap: 10px;
+    background-color: white;
+}
+.user__image {
+    border-radius: 10px;
 }
 .vote__value {
     color: forestgreen;
@@ -16,4 +24,7 @@ body {
 }
 .text {
     grid-column: 1 / -1;
+}
+p {
+    margin: 10px 0 0 0;
 }
