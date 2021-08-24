@@ -7,12 +7,12 @@ chrome.tabs.sendMessage(tab.id, { method: 'getHTML' }, (response) => {
         const item = response.comments[index]
         
         let html = '<div class="comment">'
-        html += '<div><img class="user__image" src="' + item.img + '"></div>'
+        html += '<div><img class="user__image" src="' + item.img + '-/scale_crop/64x64/-/format/webp/"></div>'
         html += '<div><a class="user" href="' + item.userlink + '" target="_blank"><div>' + item.username + '</div>'
         html += '<time>' + item.time + '</time></a></div>'
         html += '<div class="vote__value">' + item.votevalue + '</div>'
         html += '<div class="text">' + item.text + '</div>'
-        if (item.media) html += item.media
+        if (item.media) html += '<img src="' + item.media + '-/preview/480/-/format/webp/">'
         html += '</div>'
 
         container.innerHTML += html
