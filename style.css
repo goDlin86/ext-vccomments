@@ -17,6 +17,15 @@ body {
 .user__image {
     border-radius: 10px;
 }
+.user {
+    display: block;
+    text-decoration: none;
+    font-weight: bold;
+}
+time {
+    font-weight: normal;
+    font-size: 14px;
+}
 .vote__value {
     color: forestgreen;
     font-weight: bold;
@@ -25,6 +34,6 @@ body {
 .text {
     grid-column: 1 / -1;
 }
-p {
+p, .comment > img {
     margin: 10px 0 0 0;
 }

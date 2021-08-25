@@ -6,7 +6,7 @@
     "version": "1.0",
 
     "action": {
-        "default_title": "Show comments",
+        "default_title": "Show top comments",
         "default_popup": "index.html"
     },
 
@@ -14,7 +14,7 @@
 
     "content_scripts": [
         {
-          "matches": ["https://vc.ru/*"],
+          "matches": ["https://vc.ru/*", "https://dtf.ru/*", "https://tjournal.ru/*"],
           "js": ["content-script.js"]
         }
     ]
