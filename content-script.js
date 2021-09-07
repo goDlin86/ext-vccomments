@@ -1,5 +1,6 @@
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.method === 'getHTML') {
+    if (message.method === 'getComments') {
+        const title = document.querySelector('.content-title').innerText
         const items = [...document.querySelector('.comments__content').querySelectorAll('.comments__item')]
         const data = items.reduce((result, item) => {
             if (item.querySelector('.comments__item__user__image, .comments__item__avatar > .andropov_image'))
@@ -23,6 +24,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             return result
         }, [])
 
-        sendResponse({ comments: data.sort((a, b) => b.votevalue - a.votevalue) })
+        const comments = data.sort((a, b) => parseFloat(b.votevalue) - parseFloat(a.votevalue))
+
+        sendResponse({ title, comments })
     }
 })

@@ -1,12 +1,16 @@
 body {
-    margin: 20px;
+    margin: 0;
+    padding: 20px;
     width: 500px;
     font-size: 16px;
     line-height: 1.5;
     background-color: #f1f1f1;
 }
+h1 {
+    margin: 0;
+}
 .comment {
-    margin: 10px 0;
+    margin-top: 10px;
     padding: 10px;
     border-radius: 10px;
     display: grid;
@@ -21,15 +25,27 @@ body {
     display: block;
     text-decoration: none;
     font-weight: bold;
+    color: #585cff;
 }
 time {
     font-weight: normal;
     font-size: 14px;
 }
 .vote__value {
-    color: forestgreen;
-    font-weight: bold;
     text-align: center;
+}
+.vote__value > span {
+    padding: 4px 8px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.vote__value.plus > span {
+    background-color: #daffe0;
+    color: forestgreen;
+}
+.vote__value.minus > span {
+    background-color: #ffdae4;
+    color: #ff3636;
 }
 .text {
     grid-column: 1 / -1;
