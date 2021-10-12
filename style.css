@@ -54,3 +54,13 @@ time {
 p, .comment > img {
     margin: 10px 0 0 0;
 }
+.icon {
+    position: relative;
+    pointer-events: none;
+    fill: grey;
+    margin-right: 10px;
+}
+.comment__text__edited {
+    color: grey;
+    font-size: 12px;
+}
