@@ -35,23 +35,23 @@ time {
 .vote__value {
     text-align: right;
 }
-.vote__value > span {
+.vote__value span {
     padding: 4px 8px;
     border-radius: 5px;
     font-weight: bold;
 }
-.vote__value.plus > span {
+.vote__value.plus span {
     background-color: #daffe0;
     color: forestgreen;
 }
-.vote__value.minus > span {
+.vote__value.minus span {
     background-color: #ffdae4;
     color: #ff3636;
 }
 .text {
     grid-column: 1 / -1;
 }
-p, .comment > img {
+p, .comment img, .comment video {
     margin: 10px 0 0 0;
 }
 .icon {
