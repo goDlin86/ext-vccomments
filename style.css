@@ -19,11 +19,15 @@ h1 {
     column-gap: 10px;
     background-color: white;
 }
+.children {
+    margin-left: 40px;
+}
 .user__image {
     border-radius: 10px;
 }
 .user {
     display: block;
+    margin-top: 5px;
     text-decoration: none;
     font-weight: bold;
     color: #585cff;
@@ -33,6 +37,7 @@ time {
     font-size: 14px;
 }
 .vote__value {
+    margin-top: 5px;
     text-align: right;
 }
 .vote__value span {
@@ -51,8 +56,9 @@ time {
 .text {
     grid-column: 1 / -1;
 }
-p, .comment img, .comment video {
+p, .text img, .comment video {
     margin: 10px 0 0 0;
+    max-width: 100%;
 }
 .icon {
     position: relative;

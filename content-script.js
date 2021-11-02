@@ -15,41 +15,34 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                     username: item.querySelector('.comment-user__name').innerText,
                     userlink: item.querySelector('.comment-user').getAttribute('href'),
                     time: item.querySelector('time').innerText,
-                    votevalue: item.querySelector('.vote__value__v').innerText,
+                    votevalue: parseFloat(item.querySelector('.vote__value__v').innerText),
                     image: 
                         item.querySelector('.comment__space').querySelector('.comment__media .andropov_image') ? 
-                        item.querySelector('.comment__space').querySelector('.comment__media .andropov_image').getAttribute('data-image-src') : null,
+                        [...item.querySelector('.comment__space').querySelectorAll('.comment__media .andropov_image')].map(el => el.getAttribute('data-image-src')) : null,
                     video: 
                         item.querySelector('.comment__space').querySelector('.comment__media .andropov_video') ? 
-                        item.querySelector('.comment__space').querySelector('.comment__media .andropov_video').getAttribute('data-video-mp4') : null
+                        [...item.querySelector('.comment__space').querySelectorAll('.comment__media .andropov_video')].map(el => el.getAttribute('data-video-mp4')) : null
                 })
             
             return result
         }, [])
 
-        const sorted = data.sort((a, b) => parseFloat(b.votevalue) - parseFloat(a.votevalue))
-        
-        const comments = sorted.slice(0, 7).reduce((result, item) => {
-            if (!result.includes(c => c.id === item.id)) {
-                let level = 0
+        const sorted = data.sort((a, b) => b.votevalue - a.votevalue)
+        const minValue = sorted[7] ? sorted[7].votevalue : sorted[sorted.length - 1].votevalue
 
-                let replyto = item.replyto
-                let parents = []
-                while (replyto !== '0') {
-                    const parent = sorted.find(c => c.id === replyto)
-                    replyto = parent.replyto
-                    parents.push(parent)
-                    level += 1
-                }
-                
-                result.push(...parents.reverse())
+        let comments = []
+        data.forEach(el => {
+            el.display = el.votevalue >= minValue
 
-                item.level = level
-                result.push(item)
+            if (el.replyto === '0') {
+                comments.push(el)
+                return
             }
 
-            return result
-        }, [])
+            const parentEl = data.find(c => c.id === el.replyto)
+            if (el.display) parentEl.display = true
+            parentEl.children = [...(parentEl.children || []), el]
+        })
 
         sendResponse({ title, comments })
     }
