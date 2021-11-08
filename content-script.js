@@ -15,7 +15,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                     username: item.querySelector('.comment-user__name').innerText,
                     userlink: item.querySelector('.comment-user').getAttribute('href'),
                     time: item.querySelector('time').innerText,
-                    votevalue: parseFloat(item.querySelector('.vote__value__v').innerText),
+                    votevalue: parseInt(item.querySelector('.vote__value__v').innerText.replace('–','-'), 10),
                     image: 
                         item.querySelector('.comment__space').querySelector('.comment__media .andropov_image') ? 
                         [...item.querySelector('.comment__space').querySelectorAll('.comment__media .andropov_image')].map(el => el.getAttribute('data-image-src')) : null,
@@ -32,7 +32,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
 
         let comments = []
         data.forEach(el => {
-            el.display = el.votevalue >= minValue
+            if (!el.display) el.display = el.votevalue >= minValue
 
             if (el.replyto === '0') {
                 comments.push(el)
