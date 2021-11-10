@@ -28,11 +28,11 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
         }, [])
 
         const sorted = data.sort((a, b) => b.votevalue - a.votevalue)
-        const minValue = sorted[7] ? sorted[7].votevalue : sorted[sorted.length - 1].votevalue
+        const minValue = sorted[7] ? sorted[7].votevalue : sorted.length > 0 ? sorted[sorted.length - 1].votevalue : 0
 
         let comments = []
         data.forEach(el => {
-            if (!el.display) el.display = el.votevalue >= minValue
+            if (!el.display) el.display = el.votevalue >= minValue && el.votevalue > 0
 
             if (el.replyto === '0') {
                 comments.push(el)
