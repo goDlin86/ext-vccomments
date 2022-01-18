@@ -21,7 +21,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                         [...item.querySelectorAll('.comment__media .andropov_image')].map(el => el.getAttribute('data-image-src')) : null,
                     video: 
                         item.querySelector('.comment__media .andropov_video') ? 
-                        [...item.querySelectorAll('.comment__media .andropov_video')].map(el => el.getAttribute('data-video-mp4')) : null
+                        [...item.querySelectorAll('.comment__media .andropov_video')].map(el => el.getAttribute('data-video-iframe') ?? el.getAttribute('data-video-mp4')) : null
                 })
             
             return result
@@ -40,8 +40,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
             }
 
             const parentEl = data.find(c => c.id === el.replyto)
-            if (el.display) parentEl.display = true
-            parentEl.children = [...(parentEl.children || []), el]
+            if (parentEl) {
+                if (el.display) parentEl.display = true
+                parentEl.children = [...(parentEl.children || []), el]
+            }
         })
 
         sendResponse({ title, comments })

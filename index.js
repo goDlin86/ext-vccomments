@@ -24,7 +24,11 @@ const commentHTML = (item) => {
         if (item.image) 
             item.image.map(image => html += '<img src="' + image + '-/preview/480/-/format/webp/" />')
         if (item.video) 
-            item.video.map(video => html += '<video autoplay="" loop="" playsinline="" muted=""><source src="' + video + '" type="video/mp4"></video>')
+            item.video.map(video => 
+                html += video.includes('https://www.youtube.com') ? 
+                    '<iframe width="360" height="240" src="' + video + '" frameborder="0" allow="autoplay; clipboard-write; encrypted-media" allowfullscreen></iframe>' : 
+                    '<video autoplay="" loop="" playsinline="" muted=""><source src="' + video + '" type="video/mp4"></video>'
+            )
         html += '</div></div>'
 
         if (item.children) {
