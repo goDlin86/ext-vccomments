@@ -32,6 +32,9 @@ h1 {
     font-weight: bold;
     color: #585cff;
 }
+.user.author {
+    background-color: aliceblue;
+}
 time {
     font-weight: normal;
     font-size: 14px;

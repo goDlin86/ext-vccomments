@@ -17,7 +17,7 @@ const commentHTML = (item) => {
     if (item.display) {
         html = '<div class="comment">'
         html += '<div><img class="user__image" src="' + item.img + '-/scale_crop/64x64/-/format/webp/"></div>'
-        html += '<div><a class="user" href="' + item.userlink + '" target="_blank">' + item.username + '</a>'
+        html += '<div><a class="user' + (item.isAuthor ? ' author' : '') + '" href="' + item.userlink + '" target="_blank">' + item.username + '</a>'
         html += '<time>' + item.time + '</time></div>'
         html += '<div class="vote__value ' + (item.votevalue > 0 ? 'plus' : 'minus') + '"><span>' + item.votevalue + '</span></div>'
         html += '<div class="text">' + item.text
