@@ -11,10 +11,10 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                     rating: item.getAttribute('data-rating'),
                     replyto: item.getAttribute('data-reply_to'),
                     text: item.querySelector('.comment__text') ? item.querySelector('.comment__text').innerHTML : '',
-                    img: item.querySelector('.comment__avatar').getAttribute('style').substring(23, 87),
+                    img: item.querySelector('.comment__avatar__image > .andropov_image').getAttribute('data-image-src'),
                     username: item.querySelector('.comment__author').innerText,
                     userlink: item.querySelector('.comment__author').getAttribute('href'),
-                    isAuthor: item.querySelector('.comment__author--highlighted') !== null,
+                    isAuthor: item.querySelector('.comment__detail--author') !== null,
                     time: item.querySelector('time').innerText,
                     votevalue: parseInt(item.querySelector('.vote__value').innerText.replace('–','-'), 10),
                     image: 
