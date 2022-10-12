@@ -17,7 +17,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                     isAuthor: item.querySelector('.comment__detail--author') !== null,
                     isVerified: item.querySelector('.comment__verified-badge') !== null,
                     time: item.querySelector('time').innerText,
-                    votevalue: parseInt(item.querySelector('.vote__value').innerText.replace('–','-'), 10),
+                    votevalue: parseInt(item.querySelector('.vote__value').innerText.replace('−','-')),
                     image: 
                         item.querySelector('.comment__media .andropov_image') ? 
                         [...item.querySelectorAll('.comment__media .andropov_image')].map(el => el.getAttribute('data-image-src')) : null,
