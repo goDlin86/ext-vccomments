@@ -15,6 +15,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                     username: item.querySelector('.comment__author').innerText,
                     userlink: item.querySelector('.comment__author').getAttribute('href'),
                     isAuthor: item.querySelector('.comment__detail--author') !== null,
+                    isVerified: item.querySelector('.comment__verified-badge') !== null,
                     time: item.querySelector('time').innerText,
                     votevalue: parseInt(item.querySelector('.vote__value').innerText.replace('–','-'), 10),
                     image: 
