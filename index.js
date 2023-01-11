@@ -1,10 +1,10 @@
 const [tab] = await chrome.tabs.query({ active: true, currentWindow: true })
 
 chrome.tabs.sendMessage(tab.id, { method: 'getComments' }, (response) => {
+    console.log(response)
+
     const container = document.querySelector('#comments')
     container.innerHTML = '<h1>' + response.title + '</h1>'
-
-    console.log(response.comments)
 
     response.comments.map(item => {        
         container.innerHTML += commentHTML(item)
