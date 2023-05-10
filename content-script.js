@@ -9,7 +9,9 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
                     id: item.getAttribute('data-id'),
                     replyto: item.getAttribute('data-reply_to'),
                     text: item.querySelector('.comment__text') ? item.querySelector('.comment__text').innerHTML : '',
-                    img: item.querySelector('.comment__avatar__image > .andropov_image').getAttribute('data-image-src'),
+                    img: item.querySelector('.comment__avatar__image > .andropov_image') ? 
+                        item.querySelector('.comment__avatar__image > .andropov_image').getAttribute('data-image-src') : 
+                        item.querySelector('.comment__avatar__image > .subsite-video-avatar > img').getAttribute('src'),
                     username: item.querySelector('.comment__author').innerText,
                     userlink: item.querySelector('.comment__author').getAttribute('href'),
                     isAuthor: item.querySelector('.comment__detail--author') !== null,
